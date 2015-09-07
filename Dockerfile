@@ -1,6 +1,7 @@
 FROM ubuntu
 MAINTAINER Jeddy Liu <dragon9783@126.com>
 
+RUN echo "manual" > /etc/init/keystone.override
 RUN apt-get update && \
     apt-get -y install \
       keystone \
@@ -9,7 +10,9 @@ RUN apt-get update && \
       mysql-client \
       memcached \
       python-memcache \
-    && apt-get clean
+      supervisor \
+    && apt-get clean \
+    && rm -f /var/lib/keystone/keystone.db
 
 ADD startup.sh /
 ADD keystone.conf /etc/keystone/keystone.conf
