@@ -1,0 +1,20 @@
+{ 
+  "datacenter": "dc1", 
+  "data_dir": "/tmp/consul", 
+  "log_level": "INFO", 
+  "node_name": "mysql", 
+  "services": [
+    {
+      "name": "mysql",
+      "tags": ["mysql"],
+      "address": "",
+      "port": 3306,
+      "checks": [
+        {
+          "script": "/usr/local/bin/check_redis.py",
+          "interval": "10s"
+        }
+      ]
+    {
+  ] 
+}
